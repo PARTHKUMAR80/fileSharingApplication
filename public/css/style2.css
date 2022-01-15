@@ -1,0 +1,684 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #5252dd;
+}
+header{
+    font-size: 5rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 400;
+    text-align: center;
+    color: white;
+    border-bottom: 4px solid white;
+    margin-left: 150px;
+    margin-right: 150px;
+    text-shadow: 2px 2px red;
+}
+.main-container{
+    border: 5px solid white;
+    margin-top: 60px;
+    margin-left: 200px;
+    margin-right: 200px;
+    border-radius: 10px;
+    box-shadow: 0 0 12px 3px #333;
+}
+#input-type{
+    display: none;
+}
+.file-drop-container{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+}
+.file-drop-container div{
+    background-color: white;
+    text-align: center;
+}
+.file-drop-container p{
+    font-size: 3rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    padding: 10px;
+    color: white;
+    text-align: center;
+}
+
+#browse-btn{
+    color: blue;
+    cursor: pointer;
+    background-color: #333;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: white;
+    border-radius: 10px;
+    transition: 0.4s;
+}
+#browse-btn:hover{
+    background-color: white;
+    color: #333;
+}
+#download-icon-img.dragged{
+    animation: blinking 1.6s linear infinite;
+}
+@keyframes blinking{
+    25%{
+        opacity: 0.2;
+    }
+    50%{
+        opacity: 0.4;
+    }
+    75%{
+        opacity: 0.7;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.uploading-number{
+    /* border: 1px solid red; */
+    display: none;
+    margin-top: 20px;
+}
+.uploading-number p{
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: bold;
+    font-family:Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+/* progress bar */
+
+.meter {
+    box-sizing: content-box;
+    height: 20px; 
+    position: relative;
+    margin: 60px 0 20px 0; 
+    background: #555;
+    border-radius: 25px;
+    padding: 10px;
+    box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
+}
+.meter > span {
+  display: block;
+  height: 100%;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: rgb(43, 194, 83);
+  background-image: linear-gradient(
+    center bottom,
+    rgb(43, 194, 83) 37%,
+    rgb(84, 240, 84) 69%
+  );
+  box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+  transition: width 0.25s linear ;
+}
+.meter > span:after,
+.animate > span > span {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-image: linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.2) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.2) 75%,
+    transparent 75%,
+    transparent
+  );
+  z-index: 1;
+  background-size: 50px 50px;
+  animation: move 2s linear infinite;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  overflow: hidden;
+}
+
+.animate > span:after {
+  display: none;
+}
+
+@keyframes move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+.nostripes > span > span,
+.nostripes > span::after {
+  background-image: none;
+}
+
+#page-wrap {
+  width: 600px;
+  margin: 80px auto;
+  display: none;
+}
+pre {
+  background: #000;
+  text-align: left;
+  padding: 20px;
+  margin: 0 auto 30px;
+}
+
+/* link box */
+
+.link-box{
+    border: 3px dashed white;
+    margin: 15px 200px;
+    background-color: green;
+    border-radius: 4px;
+    box-shadow: 0 0 10px 5px #333;
+    display: none;
+}
+.link-box p{
+    background-color: green;
+    font-family: 2rem;
+    text-align: center;
+    font-size: 2rem;
+    color: white;
+    font-weight: bold;
+}
+.link-box div{
+    background-color: white;
+    border-radius: 4px;
+    display: flex;
+    padding: 2px;
+}
+.link-box div input{
+    font-size: 1.8rem;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 2px;
+    display: block;
+    width: 96%;
+    margin-right: 6px;
+    background-color: blue;
+    border-radius: 10px;
+    color: white;
+}
+.link-box div img{
+    height: 40px;
+    width: 40px;
+    border-radius: 6px;
+    flex-grow: 1;
+    cursor: pointer;
+}
+
+/* email from section */
+
+form{
+    display: none;
+    border: 4px dashed white;
+    margin: 20px 200px;
+    border-radius: 6px;
+}
+form p{
+    font-size: 3rem;
+    text-align: center;
+    background: linear-gradient(
+        to right,
+        orange,
+        yellow
+    );
+    color: #146389;
+    font-weight: bold;
+    border-radius: 6px;
+}
+form div{
+    display: flex;
+}
+form div label{
+    display: inline-block;
+    width: 30%;
+    margin: 10px;
+    font-size: 2.4rem;
+    color: white;
+}
+form div input{
+    display: inline-block;
+    width: 70%;
+    font-size: 2rem;
+    margin: 10px;
+    border: none;
+    border-bottom: 2px solid #333;
+    background-color: #58eef5;
+    border-radius: 6px;
+}
+form .btn-div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+form .btn-div button{
+    font-size: 2rem;
+    margin: 10px;
+    padding: 2px 8px;
+    border-radius: 6px;
+    color: white;
+    transition: transform 0.25s;
+}
+form .btn-div button:hover{
+    transform: scale(1.1);
+}
+#submit-btn{
+    background-color: green;
+    font-weight: bold;
+    cursor: pointer;
+}
+#reset-btn{
+    background-color: red;
+    font-weight: bold;
+    cursor: pointer;
+}
+.pop-up{
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translate(-50%,-120px);
+    background-color: #2e2e36;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    font-size: 2rem;
+    border-radius: 6px;
+    transition: transform 1s ease-in-out;
+}
+
+/* URL shortner */
+
+.url-title{
+    /* border: 3px dashed white; */
+    border-radius: 10px;
+    margin-top: 40px;
+    margin-left: 100px;
+    margin-right: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.url-title p{
+    font-size: 3rem;
+    text-align: center;
+    color: white;
+    letter-spacing: 2px;
+    /* border: 2px solid red; */
+}
+/* .url-title button{
+    font-size: 2rem;
+    color: white;
+    padding: 4px 10px;
+    background-color: green;
+    border-radius: 10px;
+    font-weight: 400;
+} */
+
+.url-form{
+    display: block !important;
+    background-color: #333;
+}
+.url-form p{
+    text-align: center;
+    color: white !important;
+    background: none !important;
+}
+
+.url-form div{
+    display: flex;
+}
+.url-form div input{
+    font-size: 2rem !important;
+    background-color: #333 !important;
+    width: 90%;
+    color: white;
+    height: 100%;
+    text-align: center;
+}
+.url-form div button{
+    width: 10%;
+    font-size: 2rem;
+    padding: 3px 6px;
+    border-radius: 8px;
+    color: white;
+    background-color: green;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-right: 10px;
+}
+
+table{
+    border: 2px dashed white;
+    margin: 40px auto;
+}
+table thead{
+    border: 2px dashed white;
+}
+table thead tr{
+    border: 2px dashed white;
+}
+table thead tr th{
+    border: 2px dashed white;
+    font-size: 2rem;
+    padding: 4px 10px;
+    text-align: center;
+    color: white;
+}
+table tbody{
+    border: 2px dashed white;
+}
+table tbody tr {
+    border: 2px dashed white;
+}
+table tbody tr td{
+    border: 2px dashed white;
+    text-align: left;
+    color: white;
+    font-size: 2rem;
+    padding: 4px 10px;
+}
+table tbody tr td a{
+    color: white;
+}
+.delete-btn{
+    font-size: 1.4rem;
+    background-color: red;
+    border-radius: 10px;
+    color: white;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+.delete-btn:hover{
+    opacity: 0.9;
+}
+
+
+/* media queries */
+
+@media (max-width:893px){
+    header{
+        font-size: 2.5rem;
+    }
+    .main-container{
+        border: 5px solid white;
+        margin-top: 60px;
+        margin-left: 100px;
+        margin-right: 100px;
+        border-radius: 10px;
+        box-shadow: 0 0 12px 3px #333;
+    }
+    .file-drop-container p{
+        font-size: 2rem;
+        padding: 10px;
+    }
+    .uploading-number p{
+        text-align: center;
+        font-size: 2rem;
+    }
+    .file-drop-container img{
+        height: 200px;
+        width: 400px;
+    }
+    .link-box{
+        border: 3px dashed white;
+        margin: 15px 100px;
+    }
+    .link-box p{
+        font-size: 1rem;
+    }
+    .link-box div input{
+        font-size: 1.3rem;
+        letter-spacing: 1px;
+        width: 96%;
+    }
+    .link-box div img{
+        height: 20px;
+        width: 20px;
+        border-radius: 6px;
+        flex-grow: 1;
+        cursor: pointer;
+    }
+    form{
+        display: none;
+        border: 4px dashed white;
+        margin: 20px 100px;
+        border-radius: 6px;
+    }
+    form p{
+        font-size: 2rem;
+    }
+    form div label{
+        width: 30%;
+        margin: 10px;
+        font-size: 2rem;
+    }
+    form div input{
+        display: inline-block;
+        width: 70%;
+        font-size: 1rem;
+    }
+    form .btn-div button{
+        font-size: 2rem;
+        margin: 10px;
+        padding: 2px 8px;
+        border-radius: 6px;
+        color: white;
+        transition: transform 0.25s;
+    }
+    form .btn-div button:hover{
+        transform: scale(1.1);
+    }
+    #submit-btn{
+        background-color: green;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    #reset-btn{
+        background-color: red;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    .pop-up{
+        transform: translate(-50%,-220px);
+        padding: 10px 20px;
+        font-size: 2rem;
+    }
+}
+
+@media (max-width:632px){
+    header{
+        font-size: 1.6rem;
+    }
+    .main-container{
+        border: 5px solid white;
+        margin-top: 60px;
+        margin-left: 100px;
+        margin-right: 100px;
+        border-radius: 10px;
+        box-shadow: 0 0 12px 3px #333;
+    }
+    .file-drop-container p{
+        font-size: 2rem;
+        padding: 10px;
+    }
+    .uploading-number p{
+        text-align: center;
+        font-size: 2rem;
+    }
+    .file-drop-container img{
+        height: 200px;
+        width: 250px;
+    }
+    .link-box{
+        border: 3px dashed white;
+        margin: 15px 100px;
+    }
+    .link-box p{
+        font-size: 1rem;
+    }
+    .link-box div input{
+        font-size: 1.3rem;
+        letter-spacing: 1px;
+        width: 96%;
+    }
+    .link-box div img{
+        height: 20px;
+        width: 20px;
+        border-radius: 6px;
+        flex-grow: 1;
+        cursor: pointer;
+    }
+    form{
+        display: none;
+        border: 4px dashed white;
+        margin: 20px 100px;
+        border-radius: 6px;
+    }
+    form p{
+        font-size: 2rem;
+    }
+    form div label{
+        width: 30%;
+        margin: 10px;
+        font-size: 1rem;
+    }
+    form div input{
+        display: inline-block;
+        width: 70%;
+        font-size: 1rem;
+    }
+    form .btn-div button{
+        font-size: 2rem;
+        margin: 10px;
+        padding: 2px 8px;
+        border-radius: 6px;
+        color: white;
+        transition: transform 0.25s;
+    }
+    form .btn-div button:hover{
+        transform: scale(1.1);
+    }
+    #submit-btn{
+        background-color: green;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    #reset-btn{
+        background-color: red;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    .pop-up{
+        transform: translate(-50%,-220px);
+        padding: 10px 20px;
+        font-size: 2rem;
+    }
+}
+@media (max-width:470px){
+    header{
+        font-size: 1.6rem;
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+    .main-container{
+        border: 5px solid white;
+        margin-top: 60px;
+        margin-left: 50px;
+        margin-right: 50px;
+        border-radius: 10px;
+        box-shadow: 0 0 12px 3px #333;
+    }
+    .file-drop-container p{
+        font-size: 1.6rem;
+        padding: 10px;
+    }
+    .uploading-number p{
+        text-align: center;
+        font-size: 1.6rem;
+    }
+    .file-drop-container img{
+        height: 150px;
+        width: 100px;
+    }
+    .link-box{
+        border: 3px dashed white;
+        margin: 15px 50px;
+    }
+    .link-box p{
+        font-size: 1rem;
+    }
+    .link-box div input{
+        font-size: 1.3rem;
+        letter-spacing: 1px;
+        width: 96%;
+    }
+    .link-box div img{
+        height: 20px;
+        width: 20px;
+        border-radius: 6px;
+        flex-grow: 1;
+        cursor: pointer;
+    }
+    form{
+        display: none;
+        border: 4px dashed white;
+        margin: 20px 50px;
+        border-radius: 6px;
+    }
+    form p{
+        font-size: 2rem;
+    }
+    form div label{
+        width: 30%;
+        margin: 10px;
+        font-size: 0.7rem;
+    }
+    form div input{
+        display: inline-block;
+        width: 70%;
+        font-size: 1rem;
+    }
+    form .btn-div button{
+        font-size: 0.6rem;
+        margin: 10px;
+        padding: 2px 8px;
+        border-radius: 6px;
+        color: white;
+        transition: transform 0.25s;
+    }
+    form .btn-div button:hover{
+        transform: scale(1.1);
+    }
+    #submit-btn{
+        background-color: green;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    #reset-btn{
+        background-color: red;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    .pop-up{
+        transform: translate(-50%,-220px);
+        padding: 10px 20px;
+        font-size: 2rem;
+    }
+}

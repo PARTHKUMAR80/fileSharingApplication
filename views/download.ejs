@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download File</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <section class="download">
+        <img class="download__icon" src="/img/download_icon.png" alt="download-image">
+        <% if(locals.error){ %>
+        <h1><%= locals.error %></h1>
+        <% } else { %>
+        <p>Your file is ready to download</p>
+        <p>Link expires in 24 hours</p>
+        <div class="download_box">
+            <h2><%= fileName %></h2>
+            <small><%= parseInt(fileSize/1000) %> KB</small>
+        </div>
+        <div class="btn-container">
+            <a href="<%= downloadLink %>">Download file</a>
+        </div>
+        <% } %>
+    </section>
+
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style2.css">
+    <script defer src="/scripts/script.js"></script>
+</head>
+
+<body>
+    <header>File Sharing Application...!</header>
+    <section class="main-container">
+        <div class="file-drop-container" id="file-drop-container">
+            <div>
+                <img src="/img/logo.jfif" alt="" id="download-icon-img">
+            </div>
+            <input type="file" id="input-type">
+            <p>Drop your files here, <span id="browse-btn">Browse</span></p>
+        </div>
+    </section>
+
+    <div class="uploading-number" id="uploading-number">
+        <p>Uploading... <span id="uploading-span"></span> %</p>
+    </div>
+
+    <div id="page-wrap">
+        <div class="meter">
+            <span id="progress-span"></span>
+        </div>
+    </div>
+
+    <div class="link-box" id="link-box">
+        <p>Link will expire in 24 hrs.</p>
+        <div>
+            <input type="text" id="fileURL" readonly value="klkklklk">
+            <img src="/img/copy-icon.png" alt="copy-icon" id="copy-btn">
+        </div>
+    </div>
+
+    <form action="" method="post" id="email-form">
+        <p>Send mail...!</p>
+        <div>
+            <label for="your-email">Your email...</label>
+            <input type="email" name="your-email" required id="your-email">
+        </div>
+        <div>
+            <label for="receivers-email">Receivers email...</label>
+            <input type="email" name="receivers-email" required id="receivers-email">
+        </div>
+        <div class="btn-div">
+            <button id="reset-btn" type="reset">Reset</button>
+            <button id="submit-btn" type="submit">Submit</button>
+        </div>
+    </form>
+
+    <div class="url-title">
+        <p>Shortened URL's</p>
+        <!-- <button>Refresh</button> -->
+    </div>
+
+    <form action="/shortUrls" method="POST" class="url-form">
+        <p>Add the URL below...!</p>
+        <div>
+            <input type="text" name="fullUrl" type="url" placeholder="Url" required id="fullUrl">
+            <button type="submit" id="url-submit-btn">Shrink</button>
+        </div>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Full URL</th>
+                <th>Short URL</th>
+                <th>Click</th>
+                <th><button>Delete</button></th>
+            </tr>
+        </thead>
+        <tbody>
+                <% shortUrls.forEach(shortUrl =>{ %>
+                    <tr>
+                        <td><a href="<%= shortUrl.full %>"><%= shortUrl.full %></a></td>
+                        <td><a href="<%= shortUrl.short %>"><%= shortUrl.short %></a></td>
+                        <td><%= shortUrl.clicks %></td>
+                        <td><button class="delete-btn" id="<%= shortUrl.short %>">Delete</button></td>
+                    </tr>
+                <% }) %>
+        </tbody>
+    </table>
+
+    <div class="pop-up">Link Copied Successfully...!</div>
+
+</body>
+</html>
